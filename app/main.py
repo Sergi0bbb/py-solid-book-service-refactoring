@@ -36,7 +36,6 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
         "serialize_xml": XmlSerializer(),
     }
 
-    result = None
     for cmd, method_type in commands:
         method = display_types.get(f"{cmd}_{method_type}")
 
@@ -45,8 +44,7 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
         elif cmd == "print":
             book.print_book(method)
         elif cmd == "serialize":
-            result = book.serialize(method)
-    return result
+            return book.serialize(method)
 
 
 if __name__ == "__main__":
